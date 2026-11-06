@@ -1,0 +1,29 @@
+[package]
+name = "spl-engine"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[dependencies]
+spl-audio = { path = "../spl-audio" }
+spl-dsp = { path = "../spl-dsp" }
+spl-session = { path = "../spl-session" }
+serde.workspace = true
+thiserror.workspace = true
+time = { workspace = true, features = ["serde", "formatting", "parsing"] }
+toml.workspace = true
+
+[lints]
+workspace = true
+
+[features]
+cpal-backend = ["spl-audio/cpal-backend"]
+
+[[example]]
+name = "capture_probe"
+required-features = ["cpal-backend"]
+
+[dev-dependencies]
+proptest.workspace = true

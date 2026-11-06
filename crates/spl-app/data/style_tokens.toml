@@ -1,0 +1,59 @@
+# Re:sonus plot style tokens (D-T1): the one source of the plot style for every app and
+# renderer. Python: resonus_core.style (LIGHT, DARK; TOKENS, TRACE_COLORS, FONT_FAMILY are
+# the light variant). The optional [dark] table overrides trace_colors and tokens for the
+# dark style (missing keys: the light value). Rust apps
+# (resonus-meter) vendor this file from a pinned resonus-core tag and test the copy
+# against it. Colours are "#rrggbb"; sizes in points, widths in points.
+# Schema: version 1. Readers ignore unknown keys; a newer version is rejected.
+version = 1
+
+# Bundled static Lexend (SIL OFL 1.1, resonus_core/assets/fonts/lexend).
+font_family = "Lexend"
+
+# Colours: GNOME HIG palette (https://developer.gnome.org/hig/reference/palette.html,
+# verified 2026-11-05) and libadwaita 1.10 --view-bg-color (backgrounds). Choice (D-T1):
+# each trace reaches 3:1 on its background (WCAG 2.1 SC 1.4.11), except Yellow 5 in the
+# light style (2.2:1), which is therefore last; greys match the light-style contrast.
+# Light traces: Blue 3, Red 3, Green 5, Orange 4, Purple 3, Brown 3, Yellow 5.
+trace_colors = [
+    "#3584e4",
+    "#e01b24",
+    "#26a269",
+    "#e66100",
+    "#9141ac",
+    "#986a44",
+    "#e5a50a",
+]
+
+[tokens]
+font_size = 10.0
+title_size = 12.0
+line_width = 1.4
+grid_color = "#d0d0d0"
+grid_width = 0.6
+axes_color = "#3d3846"  # Dark 3
+background = "#ffffff"  # libadwaita view background, light
+brand_text = "Re:sonus"
+brand_weight = "semibold"  # Lexend SemiBold (600), decision D1
+brand_size = 9.0
+brand_color = "#5e5c64"  # Dark 2
+neutral_color = "#3d3846"  # Dark 3: averages and references (was the 8th trace colour)
+
+[dark]
+# Blue 3, Red 3, Green 5, Orange 4, Purple 2, Brown 3, Yellow 5.
+trace_colors = [
+    "#3584e4",
+    "#e01b24",
+    "#26a269",
+    "#e66100",
+    "#c061cb",
+    "#986a44",
+    "#e5a50a",
+]
+
+[dark.tokens]
+grid_color = "#3d3846"  # Dark 3
+axes_color = "#deddda"  # Light 3
+background = "#1d1d20"  # libadwaita 1.10 view background, dark
+brand_color = "#9a9996"  # Light 5
+neutral_color = "#deddda"  # Light 3
